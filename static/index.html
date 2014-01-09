@@ -4,30 +4,38 @@
 <head>
   <meta charset="utf-8" />
   <title></title>
+  <script data-require="jquery" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
   <link data-require="foundation@*" data-semver="5.0.0" rel="stylesheet" href="//cdn.jsdelivr.net/foundation/5.0.0/css/normalize.css" />
   <link data-require="foundation@*" data-semver="5.0.0" rel="stylesheet" href="//cdn.jsdelivr.net/foundation/5.0.0/css/foundation.css" />
   <link data-require="foundation@*" data-semver="5.0.0" rel="stylesheet" href="//cdn.jsdelivr.net/foundation/5.0.0/css/foundation.min.css" />
   <script data-require="foundation@*" data-semver="5.0.0" src="//cdn.jsdelivr.net/foundation/5.0.0/js/foundation/foundation.js"></script>
   <script data-require="foundation@*" data-semver="5.0.0" src="//cdn.jsdelivr.net/foundation/5.0.0/js/foundation.min.js"></script>
   <link rel="stylesheet" href="style.css" />
-  <script data-require="jquery" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
   <script data-require="knockout@*" data-semver="3.0.0" src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.0.0/knockout-min.js"></script>
   <script data-require="lodash.js@*" data-semver="2.4.1" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
   <script src="script.js"></script>
 </head>
 
 <body>
-  <h1>Skynet Explorer <span class="success round label">ONLINE</span></h1>
+  <h1>
+    Skynet Explorer
+    <span class="round label" data-bind="text: networkStatus.message, css: networkStatus.message() === 'online' ? {success: true } : {alert: true }">
+    loading...
+    </span>
+  </h1>
   <h2>The fun way to poke around <a href="skynet.im">Skynet</a></h2>
   <div class="row">
     <div class="large-4 columns">
       <h3>Device List</h3>
       <form>
         <label>Skynet Attribute</label>
-        <input type="text" placeholder="type" />
+        <input type="text" data-bind='value: deviceList.key' />
         <label>Skynet Value</label>
-        <input type="text" placeholder="drone" />
-        <a href="#" class="button">Refresh List</a>
+        <input type="text" data-bind='value: deviceList.val'/>
+        <a href="#" class="button">Go!</a>
+        <select size="8" data-bind="foreach: [1, 2, 3]">
+        <option data-bind="text: $data"></option>
+      </select>
       </form>
 
     </div>
