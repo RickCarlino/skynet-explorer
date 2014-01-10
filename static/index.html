@@ -19,21 +19,25 @@
 <body>
   <h1>
     Skynet Explorer
-    <span class="round label" data-bind="text: networkStatus.message, css: networkStatus.message() === 'online' ? {success: true } : {alert: true }">
+    <span class="round label" data-bind="text: networkStatus.message, css: networkStatus.message() === 'online' ? {'success': true, 'alert': false } : {'alert': true, 'success':false }">
     loading...
     </span>
-  </h1>
-  <h2>The fun way to poke around <a href="skynet.im">Skynet</a></h2>
+    <div class="row">
+      <div class="large-12 columns">
+        </h1>
+  <h2>The fun way to poke around <a href="http://www.skynet.im">Skynet</a></h2>
+      </div>
+    </div>
   <div class="row">
     <div class="large-4 columns">
       <h3>Device List</h3>
       <form>
-        <label>Skynet Attribute</label>
-        <input type="text" data-bind='value: deviceList.key' />
-        <label>Skynet Value</label>
-        <input type="text" data-bind='value: deviceList.val'/>
-        <a href="#" class="button">Go!</a>
-        <select size="8" data-bind="foreach: [1, 2, 3]">
+        <label>Skynet Device Attribute</label>
+        <input type="text" data-bind='value: deviceSearch.key' />
+        <label>Skynet Device Value</label>
+        <input type="text" data-bind='value: deviceSearch.val'/>
+        <a href="#" class="button" data-bind= 'click: deviceSearch.search'>Go!</a>
+        <select size="8" data-bind="foreach: deviceSearch.results">
         <option data-bind="text: $data"></option>
       </select>
       </form>

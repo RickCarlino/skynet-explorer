@@ -57,4 +57,7 @@ app.get('/events/:deviceUID', function(req, res) {
     });
 });
 
+app.use("/", express.static(__dirname + '/static'));
+
 app.listen(3000);
+console.log('awaiting requests on port 3000');
