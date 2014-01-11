@@ -1,5 +1,6 @@
 var Device = function() {
-        this.uuid = ko.observable('');
+        this.uuid  = ko.observable('');
+        this.token = ko.observable('');
     };
 
 var SkyNetStatus = function() {
@@ -41,16 +42,3 @@ var DeviceList = function(ky, vlue) {
         this.key = ko.observable(ky);
         this.val = ko.observable(vlue);
     };
-
-var App = function() {
-        this.networkStatus = new SkyNetStatus();
-        this.device = new Device();
-        this.deviceList = new DeviceList('type', 'drone');
-        this.deviceSearch = new DeviceSearch();
-        this.deviceEvents = new DeviceEventList(this.uuid);
-    };
-
-$(function() {
-    window.app = new App();
-    ko.applyBindings(window.app);
-});

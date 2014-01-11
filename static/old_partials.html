@@ -1,0 +1,71 @@
+  <div class="row">
+    <div class="large-6 columns">
+      <form>
+        <label>Skynet Device UUID</label>
+        <input type="text" data-bind='value: deviceSearch.key' />
+        <label>Skynet Device Token</label>
+        <input type="text" data-bind='value: deviceSearch.val'/>
+        <a href="#" class="button" data-bind= 'click: deviceSearch.search'>Start</a>
+      </form>
+</div>
+    <div class="large-6 columns">
+      <form>
+        <label>Skynet Device Attribute</label>
+        <input type="text" data-bind='value: deviceSearch.key' />
+        <label>Skynet Device Value</label>
+        <input type="text" data-bind='value: deviceSearch.val'/>
+        <a href="#" class="button" data-bind= 'click: deviceSearch.search'>Search</a>
+        <select size="8" data-bind="options: deviceSearch.results, value: device.uuid"></select>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-4 columns">
+      <h3>Device Event Log</h3>
+      <div class="row collapse">
+        <div class="small-10 columns">
+          <input type="text" placeholder="enter your device key to see stats">
+        </div>
+        <div class="small-2 columns">
+          <a href="#" class="button postfix">Go</a>
+        </div>
+    </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Table Header</th>
+            <th width="150">Table Header</th>
+            <th width="150">Table Header</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Content Goes Here</td>
+            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+            <td>Content Goes Here</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="large-4 columns">
+      <h3>Device Info</h3>
+      <table>
+        <thead>
+          <tr>
+            <th width="150">Key</th>
+            <th width="150">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Content Goes Here</td>
+            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+          </tr>
+          <tr>
+            <td>Content Goes Here</td>
+            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
