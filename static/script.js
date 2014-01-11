@@ -1,5 +1,5 @@
 var Device = function() {
-        this.uuid = ko.observable('ad698900-2546-11e3-87fb-c560cb0ca47b');
+        this.uuid = ko.observable('');
     };
 
 var SkyNetStatus = function() {

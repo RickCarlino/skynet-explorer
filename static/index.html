@@ -37,8 +37,10 @@
         <label>Skynet Device Value</label>
         <input type="text" data-bind='value: deviceSearch.val'/>
         <a href="#" class="button" data-bind= 'click: deviceSearch.search'>Go!</a>
+
         <select size="8" data-bind="foreach: deviceSearch.results">
-        <option data-bind="text: $data"></option>
+        <option data-bind="text: $data, click: device.uuid($data)"></option>
+
       </select>
       </form>
 
