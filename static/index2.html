@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Skynet Explorer
+        </title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link data-require="foundation@*" data-semver="5.0.0" rel="stylesheet" href="//cdn.jsdelivr.net/foundation/5.0.0/css/normalize.css" type="text/css">
+        <link data-require="foundation@*" data-semver="5.0.0" rel="stylesheet" href="//cdn.jsdelivr.net/foundation/5.0.0/css/foundation.css" type="text/css">
+        <script data-require="jquery" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript">
+</script>
+        <script data-require="foundation@*" data-semver="5.0.0" src="//cdn.jsdelivr.net/foundation/5.0.0/js/foundation.min.js" type="text/javascript">
+</script>
+        <script data-require="knockout@*" data-semver="3.0.0" src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.0.0/knockout-min.js" type="text/javascript">
+</script>
+        <script src="pager.js" type="text/javascript">
+</script>
+        <script src="models.js" type="text/javascript">
+</script>
+        <script src="app.js" type="text/javascript">
+</script>
+    </head>
+    <body>
+        <h1>
+            Skynet Explorer <span class="round label" data-bind="text: networkStatus.message, css: networkStatus.message() === 'online' ? {success: true } : {alert: true }">loading...</span>
+        </h1>
+        <h2>
+            The fun way to poke around <a href="skynet.im">Skynet</a>
+        </h2>
+        <div class="row" data-bind="page: {id: 'start'}">
+            <div class="large-6 columns">
+                <h3>
+                    Device List
+                </h3>
+                <form>
+          <label>Skynet Device Attribute</label> <input type="text" data-bind='value: deviceSearch.key'> <label>Skynet Device Value</label>
+          <input type="text" data-bind='value: deviceSearch.val'>
+          <select size="8" data-bind="options: deviceSearch.results, value: device.uuid, click: device.fetchProperties()"></select>
+          <a href='#' class="button" data-bind='click: deviceSearch.search'>Refresh Device List</a>
+
+      </form>
+            </div>
+            <div class="large-6 columns">
+          <h3>Device Info</h3>
+
+          <table>
+            <thead>
+              <tr>
+                <th width="250">Key</th>
+
+                <th width="250">Value</th>
+              </tr>
+            </thead>
+
+            <tbody data-bind="foreach: Object.keys(device.properties())">
+              <tr>
+                <td data-bind="text: $data"></td>
+                <td data-bind="text: app.device.properties()[$data]"></td>
+              </tr>
+            </tbody>
+          </table>
+          <span data-bind="if: device.properties().uuid, click: device.authenticate">
+            <a href=''>Manage Device</a>
+          </span>
+            </div>
+</div>
+
+
+
+
+
+<div class="row" data-bind="page: {id: 'device'}">
+            <div class="large-12 columns">
+                <h3>
+                    Device Event Log
+                </h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>uuid</th>
+                            <th>socketid</th>
+                            <th>eventCode</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: device.events">
+                        <tr>
+                            <td data-bind="text: $data.uuid">
+                            </td>
+                            <td data-bind="text: $data.socketid">
+                            </td>
+                            <td data-bind="text: $data.eventCode">
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+</div>
+
+
+
+
+
+
+
+
+
+    </body>
+</html>
