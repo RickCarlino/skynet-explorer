@@ -1,6 +1,6 @@
 var Device = function() {
-        this.uuid  = ko.observable('');
-        this.token = ko.observable('');
+        this.uuid  = ko.observable();
+        this.token = ko.observable();
     };
 
 var SkyNetStatus = function() {
