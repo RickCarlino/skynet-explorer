@@ -1,6 +1,6 @@
 # Huh?
 
- This app is built as a means of having a GUI frontend for the [SkyNet API](http://www.skynet.im). It's built using KnockOutJS and comes with a simple static server / backend for API interaction (SkyNet does not support CORS, as far as I know).
+ It's a GUI frontend for the [SkyNet API](http://www.skynet.im). It's built using KnockOutJS and comes with a simple static server / backend for API interaction (SkyNet does not support CORS, as far as I know).
 
 # Up and Running
 
