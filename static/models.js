@@ -38,7 +38,7 @@ $.getJSON(url, function(data) {
         };
         this.fetchProperties = function() {
             self.properties({
-                status: 'Loading data...'
+                status: '...'
             })
             var url = '/devices/' + self.uuid()
             $.getJSON(url, function(data) {

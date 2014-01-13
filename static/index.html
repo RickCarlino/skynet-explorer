@@ -1,105 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>
-Skynet Explorer
-</title>
-<link rel="stylesheet" href="style.css" type="text/css">
-<link data-require="foundation@*" data-semver="5.0.0" rel="stylesheet" href="//cdn.jsdelivr.net/foundation/5.0.0/css/normalize.css" type="text/css">
-<link data-require="foundation@*" data-semver="5.0.0" rel="stylesheet" href="//cdn.jsdelivr.net/foundation/5.0.0/css/foundation.css" type="text/css">
-<script data-require="jquery" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Skynet Explorer
+        </title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link data-require="foundation@*" data-semver="5.0.0" rel="stylesheet" href="//cdn.jsdelivr.net/foundation/5.0.0/css/normalize.css" type="text/css">
+        <link data-require="foundation@*" data-semver="5.0.0" rel="stylesheet" href="//cdn.jsdelivr.net/foundation/5.0.0/css/foundation.css" type="text/css">
+        <script data-require="jquery" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript">
 </script>
-<script data-require="foundation@*" data-semver="5.0.0" src="//cdn.jsdelivr.net/foundation/5.0.0/js/foundation.min.js" type="text/javascript">
+        <script data-require="foundation@*" data-semver="5.0.0" src="//cdn.jsdelivr.net/foundation/5.0.0/js/foundation.min.js" type="text/javascript">
 </script>
-<script data-require="knockout@*" data-semver="3.0.0" src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.0.0/knockout-min.js" type="text/javascript">
+        <script data-require="knockout@*" data-semver="3.0.0" src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.0.0/knockout-min.js" type="text/javascript">
 </script>
-<script src="pager.js" type="text/javascript">
+        <script src="pager.js" type="text/javascript">
 </script>
-<script src="models.js" type="text/javascript">
+        <script src="models.js" type="text/javascript">
 </script>
-<script src="app.js" type="text/javascript">
+        <script src="app.js" type="text/javascript">
 </script>
-</head>
-<body>
-<div class="row">
-<div class="large-12 columns">
-  <h1>
-      Skynet Explorer <span class="round label" data-bind="text: networkStatus.message, css: networkStatus.message() === 'online' ? {'success': true, 'alert': false } : {'alert': true, 'success':false }">loading...</span>
-  </h1>
-</div>
-</div>
-<div data-bind="page: {id: 'start', title: 'SkyNet - Locate a Device.'}">
-<div class="row">
-  <div class="large-12 columns">
-      <h2>
-          Find your <a href="http://www.skynet.im">Skynet</a> device.
-      </h2>
-  </div>
-</div>
-<div class="row">
-  <div class="large-6 columns">
-      <form>
+    </head>
+    <body>
+        <h1>
+            Skynet Explorer <span class="round label" data-bind="text: networkStatus.message, css: networkStatus.message() === 'online' ? {success: true } : {alert: true }">loading...</span>
+        </h1>
+        <h2>
+            The fun way to poke around <a href="skynet.im">Skynet</a>
+        </h2>
+        <div class="row" data-bind="page: {id: 'start'}">
+            <div class="large-6 columns">
+                <h3>
+                    Device List
+                </h3>
+                <form>
           <label>Skynet Device Attribute</label> <input type="text" data-bind='value: deviceSearch.key'> <label>Skynet Device Value</label>
           <input type="text" data-bind='value: deviceSearch.val'>
-          <select data-bind="options: deviceSearch.results, value: device.uuid, click: device.fetchProperties()"></select>
+          <select size="8" data-bind="options: deviceSearch.results, value: device.uuid, click: device.fetchProperties()"></select>
           <a href='#' class="button" data-bind='click: deviceSearch.search'>Refresh Device List</a>
-          <span data-bind="if: device.uuid">
-            <a class="button" href="#auth">Start Authentication</a>
-          </span>
+
       </form>
-  </div>
-</div>
-</div>
-
-<!-- # AUTHENTICATION PAGE  # -->
-
-<div data-bind="page: {id: 'auth', title: 'SkyNet - Authenticate'}">
-<div class="row">
-  <div class="large-12 columns">
-      <form data-bind="if: !!device.uuid()">
-          <label>Skynet Device Security Token</label>
-          <input type="text" data-bind='value: device.token'>
-          <a href='#' class="button" data-bind=''>Go Back</a>
-          <a href='#main' class="button" data-bind='click: device.fetchProperties()'>Authenticate</a>
-      </form>
-  </div>
-  <p data-bind="if: !device.uuid()">Could not find a device to authenticate against. Please <a href="#">find your device on SkyNet</a>.</p>
-</div>
-</div>
-
-    <div class="row">
-      <div class="row">
-        <div class="large-4 columns">
-          <h3>Device Event Log</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Table Header</th>
-                <th width="150">Table Header</th>
-                <th width="350">Table Header</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Content Goes Here</td>
-                <td>This is longer Content Goes Here Donec id elit non mi porta
-                gravida at eget metus.</td>
-                <td>Content Goes Here</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="large-4 columns">
+            </div>
+            <div class="large-6 columns">
           <h3>Device Info</h3>
 
           <table>
             <thead>
               <tr>
-                <th width="150">Key</th>
+                <th width="250">Key</th>
 
-                <th width="150">Value</th>
+                <th width="250">Value</th>
               </tr>
             </thead>
 
@@ -110,8 +60,50 @@ Skynet Explorer
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
-    </div>
-</body>
+          <span data-bind="if: device.properties().uuid, click: device.authenticate">
+            <a href=''>Manage Device</a>
+          </span>
+            </div>
+</div>
+
+
+
+ <!-- # DEVICE EVENT LIST VIEW # -->
+
+<div class="row" data-bind="page: {id: 'device'}">
+            <div class="large-12 columns">
+                <h3>
+                    Device Event Log
+                </h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>ID</th>
+                            <th>Event Code</th>
+                            <th>Device(s)</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: device.events">
+                        <tr>
+                            <td data-bind="text: (new Date($data.timestamp)).toString()">
+                            </td>
+                            <td data-bind="text: $data.id">
+                            </td>
+                            <td data-bind="text: window.app.respCodes[$data.eventCode]">
+                            </td>
+                            <td data-bind="text: $data.devices">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+</div>
+
+
+
+
+
+
+    </body>
 </html>
