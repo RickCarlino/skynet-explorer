@@ -1,0 +1,16 @@
+{
+    "name": "skynet-explorer",
+    "private": true,
+    "version": "0.0.1",
+    "description": "It's a GUI frontend for the SkyNet API. It's built using KnockOutJS and comes with a simple static server / backend for API interaction (SkyNet does not support CORS, as far as I know).",
+    "dependencies": {
+        "express": "*"
+    },
+    "scripts": {
+        "start": "node backend.js"
+    },
+    "main": "backend.js",
+    "repository": "https://rickcarlino/skynet-explorer.git",
+    "author": "Rick Carlino",
+    "license": "MIT"
+}
